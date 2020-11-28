@@ -1,0 +1,46 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Candidatos List</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Classificação</th>
+          <th>Nome</th>
+          <th>Cidade</th>
+          <th>Nota</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidato of candidatos let i = index" [attr.data-index]="i">
+          <td>{{i+1}}</td>
+          <td>{{candidato.nome}}</td>
+          <td>{{candidato.cidade}}</td>
+          <td>{{candidato.nota}}</td>
+          <td><b>{{candidato.status ? "Aprovado" : "Reprovado"}}</b></td>
+          <td>
+
+            <button (click)="detailsCandidato(candidato.id)" class="btn btn-info" id="btn-action"><i class="fas fa-info"></i></button>
+            <button (click)="updateCandidato(candidato.id)" class="btn btn-warning" id="btn-action"><i
+                class="fas fa-user-edit"></i></button>
+            <button (click)="openModal(template)" class="btn btn-danger" id="btn-action"><i class="fas fa-trash-alt"></i></button>
+          </td>
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p>Do you want to confirm?</p>
+              <button type="button" class="btn btn-default"  (click)="deleteCandidato(candidato.id)">Yes</button>
+              <button type="button" class="btn btn-primary" id="btn-modal" (click)="decline()">No</button>
+            </div>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>
