@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sistemadoacoes.api:
+    image: ${DOCKER_REGISTRY-}sistemadoacoesapi
+    build:
+      context: .
+      dockerfile: SistemaDoacoes.API\Dockerfile
